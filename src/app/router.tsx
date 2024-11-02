@@ -1,34 +1,56 @@
-import { AuthLayout, SignInPage, SignUpPage, YandexCallback } from "@modules/auth";
 import { ProfilePage } from "@modules/user/profile";
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 import { PATHS } from "@shared/constants";
+import { Spinner } from "@shared/ui/spinner";
 
+import { AppLayout } from "./AppLayout";
 import { PrivateRoute } from "./PrivateRoute";
-import { RootPage } from "./RootPage";
+
+const MindMapPage = lazy(() => import("@modules/mindmap"));
+
+const UpdatePage = lazy(() => import("@modules/upload"));
 
 export const routes = createBrowserRouter([
+  // {
+  //   element: <AuthLayout />,
+  //   children: [
+  //     {
+  //       path: PATHS.SIGNIN,
+  //       element: <SignInPage />
+  //     },
+  //     {
+  //       path: PATHS.SIGNUP,
+  //       element: <SignUpPage />
+  //     }
+  //   ]
+  // },
   {
-    element: <AuthLayout />,
+    element: <AppLayout />,
     children: [
       {
-        path: PATHS.SIGNIN,
-        element: <SignInPage />
+        path: "/",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <UpdatePage />
+          </Suspense>
+        )
       },
       {
-        path: PATHS.SIGNUP,
-        element: <SignUpPage />
+        path: PATHS.MINDMAP,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <MindMapPage />
+          </Suspense>
+        )
       }
     ]
   },
-  {
-    path: "/",
-    element: <RootPage />
-  },
-  {
-    path: PATHS.OAUTH_YANDEX,
-    element: <YandexCallback />
-  },
+  // {
+  //   path: PATHS.OAUTH_YANDEX,
+  //   element: <YandexCallback />
+  // },
   {
     element: <PrivateRoute />,
     children: [

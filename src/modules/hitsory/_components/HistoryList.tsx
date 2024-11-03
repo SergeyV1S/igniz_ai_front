@@ -21,7 +21,7 @@ export const HistoryList = () => {
               className='border cursor-pointer border-border rounded-lg flex items-center justify-center px-5 py-2'
             >
               <div className='flex items-center w-full gap-4'>
-                <h4 className='text-sm'>{item.summary.slice(0, 20)}</h4>
+                <h4 className='text-sm'>{item.summary.slice(0, 50)}</h4>
               </div>
               <Button variant='ghost' size='icon'>
                 <Cross1Icon className='size-4' />

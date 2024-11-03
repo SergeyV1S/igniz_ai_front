@@ -7,6 +7,7 @@ import { Button } from "@shared/ui/button";
 import { Spinner } from "@shared/ui/spinner";
 
 import { Diagram } from "./_components/Diagram";
+import { setTotTadeBuffer } from "./utils/setTotTadeBuffer";
 
 const CurrentMindMap = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +42,12 @@ const CurrentMindMap = () => {
           <div className='border border-border bg-background relative rounded-xl'>
             <p className='p-4'>{data.data.summary}</p>
             {isVisible && (
-              <Button size='icon' variant='ghost' className='absolute right-1 top-1'>
+              <Button
+                onClick={() => setTotTadeBuffer(data.data.summary)}
+                size='icon'
+                variant='ghost'
+                className='absolute right-1 top-1'
+              >
                 <CopyIcon />
               </Button>
             )}

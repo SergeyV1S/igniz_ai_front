@@ -7,6 +7,7 @@ import { Spinner } from "@shared/ui/spinner";
 
 import { Diagram } from "./_components/Diagram";
 import { umlStore } from "./store";
+import { setTotTadeBuffer } from "./utils/setTotTadeBuffer";
 
 const MindMap = () => {
   const { data } = umlStore();
@@ -36,7 +37,12 @@ const MindMap = () => {
           <div className='border border-border bg-background relative rounded-xl'>
             <p className='p-4'>{data.summary}</p>
             {isVisible && (
-              <Button size='icon' variant='ghost' className='absolute right-1 top-1'>
+              <Button
+                onClick={() => setTotTadeBuffer(data.summary)}
+                size='icon'
+                variant='ghost'
+                className='absolute right-1 top-1'
+              >
                 <CopyIcon />
               </Button>
             )}

@@ -4,7 +4,7 @@ import { FileIcon } from "@radix-ui/react-icons";
 import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { PATHS } from "@shared/constants";
+import { PATHS, queryClient } from "@shared/constants";
 import { toast } from "@shared/lib/hooks/use-toast";
 
 import { checkFileExtantion } from "../lib/checkFileExtantion";
@@ -46,6 +46,7 @@ export const FileUpload = ({ setLoading }: IFileUploadProps) => {
       )
       .finally(() => {
         formDataImage.delete("file");
+        queryClient.invalidateQueries({ queryKey: ["getHistory"] });
         setLoading(false);
       });
     navigate(PATHS.MINDMAP);

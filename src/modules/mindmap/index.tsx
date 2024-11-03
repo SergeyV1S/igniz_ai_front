@@ -52,9 +52,10 @@ const MindMap = () => {
       )}
       <div className='space-y-4'>
         <h1 className='text-2xl leading-[120%] font-semibold text-center'>Инфорграфика</h1>
-
-        <UmlCodeEditor plantuml_code={data.plantuml_code} />
-        <Diagram {...data} />
+        <h3 className='font-medium'>Код:</h3>
+        <UmlCodeEditor uid={data.uid} plantuml_code={data.plantuml_code} />
+        <h3 className='font-medium'>Результат:</h3>
+        <Diagram plantuml_code={data.plantuml_code} />
       </div>
     </div>
   );

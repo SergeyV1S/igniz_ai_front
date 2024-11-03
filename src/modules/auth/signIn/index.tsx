@@ -64,12 +64,14 @@ export const SignInPage = () => {
             isPending={isPending}
           />
         )}
-        <Link
-          className=''
-          to={`${import.meta.env.BASE_YANDEX_API_URL}/authorize?response_type=code&client_id=${import.meta.env.YANDEX_CLIENT_ID}&redirect_uri=${import.meta.env.YANDEX_REDIRECT_URI}`}
-        >
-          <img className='size-10' src='/Yandex_icon.png' alt='yandex' />
-        </Link>
+        <div className='mt-5 flex items-center justify-center'>
+          <Link
+            className=''
+            to={`${import.meta.env.BASE_YANDEX_API_URL}/authorize?response_type=code&client_id=${import.meta.env.YANDEX_CLIENT_ID}&redirect_uri=${import.meta.env.YANDEX_REDIRECT_URI}`}
+          >
+            <img className='size-10' src='/Yandex_icon.png' alt='yandex' />
+          </Link>
+        </div>
         <div className='mt-4 text-center text-sm'>
           У вас нет учетной записи?{" "}
           <Link to={PATHS.SIGNUP} className='underline'>

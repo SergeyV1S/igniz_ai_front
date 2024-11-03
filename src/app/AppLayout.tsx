@@ -1,4 +1,4 @@
-import { useGetHistoryQuery } from "@modules/hitsory/api/useGetHistoryQuery";
+import { useGetHistoryQuery } from "@modules/hitsory/api/hooks/useGetHistoryQuery";
 import { useHistoryStore } from "@modules/hitsory/store";
 import { ExitIcon } from "@radix-ui/react-icons";
 import { ChevronUp, FileIcon, User2 } from "lucide-react";
@@ -150,7 +150,7 @@ export const AppLayout = () => {
       </Sidebar>
       <SidebarTrigger className='mt-2 mr-2' />
       <main className='container bg-accent'>
-        <div className='flex flex-col m-20 h-max rounded-3xl justify-center items-center bg-background'>
+        <div className='flex flex-col min-h-96 m-20 pb-20 h-max rounded-3xl justify-center items-center bg-background'>
           <Outlet />
         </div>
       </main>

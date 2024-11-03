@@ -1,6 +1,6 @@
-import { api } from "@shared/api/instance";
+import type { IHistoryData } from "@modules/hitsory/types";
 
-import type { IHistoryData } from "../types";
+import { api } from "@shared/api/instance";
 
 interface IGetHistoryResponse extends IBaseResponse {
   data: IHistoryData[];

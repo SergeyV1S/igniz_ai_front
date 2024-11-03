@@ -1,3 +1,4 @@
+import { AuthLayout, SignInPage, SignUpPage } from "@modules/auth";
 import CurrentMindMap from "@modules/mindmap/CurrentMindMap";
 import { ProfilePage } from "@modules/user/profile";
 import { Suspense, lazy } from "react";
@@ -14,19 +15,19 @@ const MindMapPage = lazy(() => import("@modules/mindmap"));
 const UpdatePage = lazy(() => import("@modules/upload"));
 
 export const routes = createBrowserRouter([
-  // {
-  //   element: <AuthLayout />,
-  //   children: [
-  //     {
-  //       path: PATHS.SIGNIN,
-  //       element: <SignInPage />
-  //     },
-  //     {
-  //       path: PATHS.SIGNUP,
-  //       element: <SignUpPage />
-  //     }
-  //   ]
-  // },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: PATHS.SIGNIN,
+        element: <SignInPage />
+      },
+      {
+        path: PATHS.SIGNUP,
+        element: <SignUpPage />
+      }
+    ]
+  },
   {
     element: <AppLayout />,
     children: [

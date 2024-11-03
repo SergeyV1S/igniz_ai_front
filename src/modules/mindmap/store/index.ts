@@ -4,6 +4,7 @@ interface IState {
   data: {
     summary: string;
     plantuml_code: string;
+    uid: string;
   };
 }
 
@@ -14,7 +15,8 @@ interface IAction {
 export const umlStore = create<IState & IAction>((set) => ({
   data: {
     summary: "",
-    plantuml_code: ""
+    plantuml_code: "",
+    uid: ""
   },
   setUml: (newData) => set(() => ({ data: newData }))
 }));

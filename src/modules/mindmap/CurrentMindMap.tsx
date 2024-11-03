@@ -1,4 +1,4 @@
-import { useGetHistoryByUidQuery } from "@modules/hitsory/api/useGetHistoryByUidQuery";
+import { useGetHistoryByUidQuery } from "@modules/hitsory/api/hooks/useGetHistoryByUidQuery";
 import { ArrowLeft, CopyIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -64,7 +64,7 @@ const CurrentMindMap = () => {
       <div className='space-y-4'>
         <h1 className='text-2xl leading-[120%] font-semibold text-center'>Инфорграфика</h1>
         <h3 className='font-medium'>Код:</h3>
-        <UmlCodeEditor plantuml_code={data.data.plantuml_code} />
+        <UmlCodeEditor plantuml_code={data.data.plantuml_code} uid={data.data.uid} />
         <h3 className='font-medium'>Результат:</h3>
         <Diagram plantuml_code={data.data.plantuml_code} />
       </div>

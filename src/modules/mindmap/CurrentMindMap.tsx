@@ -3,11 +3,12 @@ import { ArrowLeft, CopyIcon } from "lucide-react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { setTotTadeBuffer } from "@shared/lib/setTotTadeBuffer";
 import { Button } from "@shared/ui/button";
 import { Spinner } from "@shared/ui/spinner";
 
 import { Diagram } from "./_components/Diagram";
-import { setTotTadeBuffer } from "./utils/setTotTadeBuffer";
+import { UmlCodeEditor } from "./_components/UmlCodeEditor";
 
 const CurrentMindMap = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,6 +57,9 @@ const CurrentMindMap = () => {
       )}
       <div className='space-y-4'>
         <h1 className='text-2xl leading-[120%] font-semibold text-center'>Инфорграфика</h1>
+        <h3 className='font-medium'>Код:</h3>
+        <UmlCodeEditor plantuml_code={data.data.plantuml_code} />
+        <h3 className='font-medium'>Результат:</h3>
         <Diagram plantuml_code={data.data.plantuml_code} />
       </div>
     </div>

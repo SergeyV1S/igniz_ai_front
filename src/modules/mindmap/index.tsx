@@ -2,12 +2,13 @@ import { ArrowLeft, CopyIcon } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { setTotTadeBuffer } from "@shared/lib/setTotTadeBuffer";
 import { Button } from "@shared/ui/button";
 import { Spinner } from "@shared/ui/spinner";
 
 import { Diagram } from "./_components/Diagram";
+import { UmlCodeEditor } from "./_components/UmlCodeEditor";
 import { umlStore } from "./store";
-import { setTotTadeBuffer } from "./utils/setTotTadeBuffer";
 
 const MindMap = () => {
   const { data } = umlStore();
@@ -51,6 +52,8 @@ const MindMap = () => {
       )}
       <div className='space-y-4'>
         <h1 className='text-2xl leading-[120%] font-semibold text-center'>Инфорграфика</h1>
+
+        <UmlCodeEditor plantuml_code={data.plantuml_code} />
         <Diagram {...data} />
       </div>
     </div>

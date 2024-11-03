@@ -3,21 +3,18 @@ import { Link } from "react-router-dom";
 
 import { PATHS } from "@shared/constants";
 import { Button } from "@shared/ui/button";
-import { Spinner } from "@shared/ui/spinner";
 
-import { useGetHistoryQuery } from "../api/useGetHistoryQuery";
+import { useHistoryStore } from "../store";
 
 export const HistoryList = () => {
-  const { data, isPending } = useGetHistoryQuery({});
-
-  if (isPending) return <Spinner />;
+  const { historyData } = useHistoryStore();
 
   return (
     <div className='container space-y-3 relative'>
       <h2 className='font-bold'>Ранее загруженные файлы</h2>
-      {data && data.data.data.length > 0 ? (
+      {historyData.length > 0 ? (
         <div className='space-y-2 overflow-y-scroll h-full max-h-[190px]'>
-          {data.data.data.map((item) => (
+          {historyData.map((item) => (
             <Link
               to={`${PATHS.MINDMAP}/${item.uid}`}
               key={item.uid}

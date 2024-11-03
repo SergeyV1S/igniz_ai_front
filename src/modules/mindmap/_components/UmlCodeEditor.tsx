@@ -19,7 +19,7 @@ export const UmlCodeEditor = ({ plantuml_code }: IUmlCodeEditorProps) => {
     <div className='relative max-h-[250px]'>
       <Textarea ref={textareaRef} className='h-64' value={value} onChange={handleChange} />
       <div className='absolute top-1 right-5'>
-        <Button variant='ghost' size='icon'>
+        <Button variant='ghost' disabled={plantuml_code === value} size='icon'>
           <SaveIcon />
         </Button>
         <Button onClick={() => setTotTadeBuffer(value)} variant='ghost' size='icon'>

@@ -1,17 +1,22 @@
+import { useGetHistoryByUidQuery } from "@modules/hitsory/api/useGetHistoryByUidQuery";
 import { ArrowLeft, CopyIcon } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "@shared/ui/button";
 import { Spinner } from "@shared/ui/spinner";
 
 import { Diagram } from "./_components/Diagram";
-import { umlStore } from "./store";
 
-const MindMap = () => {
-  const { data } = umlStore();
+const CurrentMindMap = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { uid } = useParams();
   const navigate = useNavigate();
+  const { data } = useGetHistoryByUidQuery({
+    params: {
+      uid: uid!
+    }
+  });
 
   if (!data) return <Spinner />;
 
@@ -24,7 +29,7 @@ const MindMap = () => {
       >
         <ArrowLeft />
       </Button>
-      {data.summary && (
+      {data.data && (
         <div
           className='space-y-5'
           onMouseOver={() => setIsVisible(true)}
@@ -34,7 +39,7 @@ const MindMap = () => {
             Результат конвертации
           </h1>
           <div className='border border-border bg-background relative rounded-xl'>
-            <p className='p-4'>{data.summary}</p>
+            <p className='p-4'>{data.data.summary}</p>
             {isVisible && (
               <Button size='icon' variant='ghost' className='absolute right-1 top-1'>
                 <CopyIcon />
@@ -45,10 +50,10 @@ const MindMap = () => {
       )}
       <div className='space-y-4'>
         <h1 className='text-2xl leading-[120%] font-semibold text-center'>Инфорграфика</h1>
-        <Diagram {...data} />
+        <Diagram plantuml_code={data.data.plantuml_code} />
       </div>
     </div>
   );
 };
 
-export default MindMap;
+export default CurrentMindMap;

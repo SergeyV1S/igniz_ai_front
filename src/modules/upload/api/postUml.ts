@@ -1,8 +1,6 @@
 import { api } from "@shared/api/instance";
 
-export interface IPostUmlResponse {
-  success: boolean;
-  message: string;
+export interface IPostUmlResponse extends IBaseResponse {
   data: {
     summary: string;
     plantuml_code: string;

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getProfile } from "../requests/getProfile";
+import { getProfile } from "./getProfile";
 
 export const useGetProfileQuery = ({ config }: QuerySettings<typeof getProfile>) =>
   useQuery({

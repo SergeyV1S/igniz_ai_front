@@ -120,7 +120,7 @@ export const AppLayout = () => (
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-    <SidebarTrigger className='mt-2' />
+    <SidebarTrigger className='mt-2 mr-2' />
     <main className='container flex min-h-svh bg-accent'>
       <div className='w-full flex m-20 rounded-3xl justify-center bg-background'>
         <Outlet />

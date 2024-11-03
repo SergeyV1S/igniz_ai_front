@@ -1,3 +1,4 @@
+import CurrentMindMap from "@modules/mindmap/CurrentMindMap";
 import { ProfilePage } from "@modules/user/profile";
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
@@ -42,6 +43,14 @@ export const routes = createBrowserRouter([
         element: (
           <Suspense fallback={<Spinner />}>
             <MindMapPage />
+          </Suspense>
+        )
+      },
+      {
+        path: PATHS.MINDMAP + "/:uid",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <CurrentMindMap />
           </Suspense>
         )
       }

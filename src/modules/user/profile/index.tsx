@@ -1,6 +1,6 @@
 import { LogoutButton } from "@modules/auth";
 
-import { useGetProfileQuery } from "../api/hooks/useGetProfileQuery";
+import { useGetProfileQuery } from "../api/useGetProfileQuery";
 
 export const ProfilePage = () => {
   const { data, isPending } = useGetProfileQuery({});

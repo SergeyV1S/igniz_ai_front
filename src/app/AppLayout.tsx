@@ -150,7 +150,7 @@ export const AppLayout = () => {
       </Sidebar>
       <SidebarTrigger className='mt-2 mr-2' />
       <main className='container bg-accent'>
-        <div className='flex flex-col m-20 h-max rounded-3xl justify-center bg-background'>
+        <div className='flex flex-col m-20 h-max rounded-3xl justify-center items-center bg-background'>
           <Outlet />
         </div>
       </main>

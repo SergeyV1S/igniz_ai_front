@@ -1,6 +1,6 @@
 import { useGetHistoryByUidQuery } from "@modules/hitsory/api/useGetHistoryByUidQuery";
 import { ArrowLeft, CopyIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { setTotTadeBuffer } from "@shared/lib/setTotTadeBuffer";
@@ -14,11 +14,17 @@ const CurrentMindMap = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { uid } = useParams();
   const navigate = useNavigate();
-  const { data } = useGetHistoryByUidQuery({
+  const { data, refetch } = useGetHistoryByUidQuery({
     params: {
       uid: uid!
     }
   });
+
+  useEffect(() => {
+    if (uid) {
+      refetch();
+    }
+  }, [uid, refetch]);
 
   if (!data) return <Spinner />;
 

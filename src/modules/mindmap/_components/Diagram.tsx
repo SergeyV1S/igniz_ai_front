@@ -8,7 +8,7 @@ export const Diagram = ({ plantuml_code }: { plantuml_code: string }) => {
   useEffect(() => {
     const url = getPlantUMLUrl(plantuml_code);
     setDiagramUrl(url);
-  }, []);
+  }, [plantuml_code]);
 
   return (
     <div>
